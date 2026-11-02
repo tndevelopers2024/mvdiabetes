@@ -95,7 +95,14 @@ export default function AppointmentForm() {
         if (doctorSlug) {
             const doc = doctors.find(d => d.slug === doctorSlug);
             if (doc) {
-                if (doc.location.length === 1) updates.location = doc.location[0];
+                if (doc.location.length === 1) {
+                    const loc = doc.location[0];
+                    const matchedBranch = branches.find(b =>
+                        b.shortName.toLowerCase().includes(loc.toLowerCase()) ||
+                        b.id.toLowerCase() === loc.toLowerCase()
+                    );
+                    updates.location = matchedBranch ? matchedBranch.shortName.replace(/ \(.*\)/, '') : loc;
+                }
                 updates.appointmentType = 'consultation';
             }
         }

@@ -36,7 +36,7 @@ export default function DoctorsPage() {
                     {/* Doctor grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {doctors.map(doc => (
-                            <div key={doc.id} className="group bg-white rounded-2xl border border-border overflow-hidden hover:shadow-lg hover:border-primary/20 transition-all">
+                            <div key={doc.id} className="group bg-white rounded-2xl border border-border overflow-hidden hover:shadow-lg hover:border-primary/20 transition-all flex flex-col">
                                 {/* Photo */}
                                 <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-secondary/10 relative overflow-hidden">
                                     {doc.image ? (
@@ -51,8 +51,8 @@ export default function DoctorsPage() {
                                 </div>
 
                                 {/* Info */}
-                                <div className="p-5">
-                                    <h3 className="font-bold text-text-primary text-lg leading-snug">{doc.name}</h3>
+                                <div className="p-5 flex flex-col flex-1">
+                                    <h3 className="font-bold text-text-primary text-lg leading-snug group-hover:text-primary transition-colors">{doc.name}</h3>
                                     <p className="text-sm text-primary font-medium mt-1">{doc.designation}</p>
                                     <p className="text-xs text-text-secondary mt-1.5">{doc.qualifications}</p>
                                     <div className="flex items-center gap-1.5 text-xs text-text-secondary mt-2">
@@ -60,7 +60,7 @@ export default function DoctorsPage() {
                                     </div>
 
                                     {/* Actions */}
-                                    <div className="flex gap-2 mt-4">
+                                    <div className="flex gap-2 mt-auto pt-4">
                                         <Link href={`/doctors/${doc.slug}`}
                                             className="flex-1 text-center px-3 py-2.5 rounded-xl border-2 border-border text-text-primary text-sm font-semibold hover:bg-surface-muted transition-all">
                                             View Profile

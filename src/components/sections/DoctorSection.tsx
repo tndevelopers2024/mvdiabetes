@@ -7,7 +7,7 @@ import { ArrowRight, MapPin, Calendar } from 'lucide-react';
 import { doctors, getDoctorInitials } from '@/data/doctors';
 
 export default function DoctorSection() {
-    const featuredDocs = doctors.slice(0, 7);
+    const featuredDocs = doctors.slice(0, 9);
 
     return (
         <section className="section-padding bg-white">
@@ -46,7 +46,7 @@ export default function DoctorSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: '-30px' }}
                             transition={{ duration: 0.4, delay: i * 0.08 }}
-                            className="group bg-white rounded-2xl border border-border hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden"
+                            className="group bg-white rounded-2xl border border-border hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden flex flex-col"
                         >
                             {/* Photo */}
                             <div className="aspect-[4/3] bg-gradient-to-br from-primary/5 to-primary/10 relative overflow-hidden flex items-center justify-center border-b border-border/50">
@@ -67,7 +67,7 @@ export default function DoctorSection() {
                                 )}
                             </div>
 
-                            <div className="p-5 lg:p-6">
+                            <div className="p-5 lg:p-6 flex flex-col flex-1">
                                 <h3 className="text-base font-bold text-text-primary group-hover:text-primary transition-colors">
                                     {doc.name}
                                 </h3>
@@ -79,7 +79,7 @@ export default function DoctorSection() {
                                     {doc.location.join(' • ')}
                                 </div>
 
-                                <div className="flex gap-2 mt-4">
+                                <div className="flex gap-2 mt-auto pt-4">
                                     <Link
                                         href={`/doctors/${doc.slug}`}
                                         className="flex-1 text-center py-2 text-xs font-semibold text-primary bg-primary/5 rounded-lg hover:bg-primary/10 transition-colors"
@@ -87,7 +87,7 @@ export default function DoctorSection() {
                                         View Profile
                                     </Link>
                                     <Link
-                                        href="/appointment"
+                                        href={`/appointment?doctor=${doc.slug}`}
                                         className="flex items-center justify-center gap-1.5 flex-1 py-2 text-xs font-semibold text-white bg-primary rounded-lg hover:bg-primary-dark transition-colors"
                                     >
                                         <Calendar size={12} />
